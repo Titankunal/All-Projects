@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .hero-section {
+        position: relative;
+        padding: 3rem 0;
+        margin-bottom: 5rem;
+        border-bottom: 1px solid rgba(255, 140, 0, 0.3);
+    }
+    
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(rgba(255, 140, 0, 0.2) 2px, transparent 2px);
+        background-size: 30px 30px;
+        z-index: 0;
+        animation: floatDots 30s linear infinite;
+        opacity: 0.6;
+        pointer-events: none;
+    }
+    
+    @keyframes floatDots {
+        0% { background-position: 0px 0px; }
+        100% { background-position: 60px 60px; }
+    }
+    
+    .hero-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .stat-card {
+        border-top: 3px solid var(--orange) !important;
+    }
+
+    .spacer-section {
+        margin-bottom: 6rem;
+    }
+</style>
+
+<!-- Hero Section -->
+<div class="row align-items-center text-center text-md-start hero-section">
+    <div class="col-lg-8 hero-content">
+        <h1 class="display-3 fw-bold text-gradient mb-3">Predict. Analyze. Understand.</h1>
+        <p class="lead fs-4 text-light opacity-75 mb-4">Empowering transit networks with real-time forecasting. Leverage our XGBoost engine to predict delays before they happen.</p>
+        <div class="d-flex gap-3 justify-content-center justify-content-md-start">
+            <a href="/predict" class="btn btn-primary btn-lg px-4 py-2 fw-bold">Try Live Predictor</a>
+            <a href="/analytics" class="btn btn-outline-light btn-lg px-4 py-2 fw-semibold" style="border-color: var(--orange); color: var(--text-color);">View Analytics</a>
+        </div>
+    </div>
+    <div class="col-lg-4 d-none d-lg-block text-center hero-content">
+        <div style="font-size: 120px; text-shadow: 0 0 40px rgba(255,140,0,0.6);" class="fade-in">🚆</div>
+    </div>
+</div>
+
+<!-- Stats Counters -->
+<div class="row text-center spacer-section">
+    <div class="col-md-4 mb-4 mb-md-0">
+        <div class="card stat-card p-4 shadow h-100 bg-opacity-10 bg-black">
+            <div class="card-body">
+                <h2 class="display-3 text-white fw-bold mb-1 stat-counter" data-target="2000">0</h2>
+                <div class="small text-light opacity-50 fw-semibold text-uppercase tracking-wider">Total Records</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4 mb-md-0">
+        <div class="card stat-card p-4 shadow h-100 bg-opacity-10 bg-black">
+            <div class="card-body">
+                <h2 class="display-3 text-white fw-bold mb-1 stat-counter" data-target="24">0</h2>
+                <div class="small text-light opacity-50 fw-semibold text-uppercase tracking-wider">Data Features</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card stat-card p-4 shadow h-100 bg-opacity-10 bg-black">
+            <div class="card-body">
+                <h2 class="display-3 text-white fw-bold mb-1"><span class="stat-counter" data-target="74">0</span><span class="fs-4 text-orange">%</span></h2>
+                <div class="small text-light opacity-50 fw-semibold text-uppercase tracking-wider">Model Accuracy</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modules Section -->
+<div class="row g-4 mb-5">
+    <div class="col-md-6">
+        <div class="card h-100 p-4">
+            <div class="card-body text-start">
+                <div style="font-size: 2.5rem; line-height: 1;" class="mb-3">🚆</div>
+                <h3 class="card-title text-orange mb-3 fw-bold">Live Prediction</h3>
+                <p class="card-text text-light opacity-75 fs-5">Input live conditions including weather, transit type, route, and time to get a real-time probability of your trip being delayed.</p>
+                <a href="/predict" class="text-orange text-decoration-none fw-bold mt-2 d-inline-block fs-5">Go to Predictor &rarr;</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card h-100 p-4">
+            <div class="card-body text-start">
+                <div style="font-size: 2.5rem; line-height: 1;" class="mb-3">📊</div>
+                <h3 class="card-title text-orange mb-3 fw-bold">Visual Analytics</h3>
+                <p class="card-text text-light opacity-75 fs-5">Explore interactive charts visualizing the dataset's underlying patterns, delay hotspots, and historical trends.</p>
+                <a href="/analytics" class="text-orange text-decoration-none fw-bold mt-2 d-inline-block fs-5">View Charts &rarr;</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card h-100 p-4">
+            <div class="card-body text-start">
+                <div style="font-size: 2.5rem; line-height: 1;" class="mb-3">🔍</div>
+                <h3 class="card-title text-orange mb-3 fw-bold">Model Insights</h3>
+                <p class="card-text text-light opacity-75 fs-5">Dive into the XGBoost diagnostics. View the confusion matrix and discover exactly which features drive delays the most.</p>
+                <a href="/insights" class="text-orange text-decoration-none fw-bold mt-2 d-inline-block fs-5">See Insights &rarr;</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card h-100 p-4">
+            <div class="card-body text-start">
+                <div style="font-size: 2.5rem; line-height: 1;" class="mb-3">🏗️</div>
+                <h3 class="card-title text-orange mb-3 fw-bold">Architecture</h3>
+                <p class="card-text text-light opacity-75 fs-5 mb-2">Built with a modern web stack:</p>
+                <ul class="list-unstyled text-light opacity-75 fs-5 pt-1">
+                    <li class="mb-2">✨ <strong>Backend:</strong> Flask (Python), Pandas</li>
+                    <li class="mb-2">✨ <strong>ML Engine:</strong> scikit-learn, XGBoost</li>
+                    <li>✨ <strong>Frontend:</strong> Bootstrap 5, Plotly.js charts</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const counters = document.querySelectorAll('.stat-counter');
+    const speed = 40;
+
+    counters.forEach(counter => {
+        const updateCount = () => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText;
+            const inc = target / speed;
+
+            if (count < target) {
+                counter.innerText = Math.ceil(count + inc);
+                setTimeout(updateCount, 40);
+            } else {
+                counter.innerText = target;
+            }
+        };
+        updateCount();
+    });
+</script>
+{% endblock %}
