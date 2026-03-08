@@ -27,4 +27,4 @@ def load_and_explore_data(file_path):
     return df
 
 if __name__ == "__main__":
-    df = load_and_explore_data("public_transport_delays.csv")
+    df = load_and_explore_data("data/public_transport_delays.csv")

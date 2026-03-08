@@ -64,4 +64,4 @@ def train_and_evaluate_model(input_file, model_file):
     print(f"\nModel saved successfully to {model_file}")
 
 if __name__ == "__main__":
-    train_and_evaluate_model("processed_data.csv", "xgboost_model.pkl")
+    train_and_evaluate_model("processed_data.csv", "models/xgboost_model.pkl")

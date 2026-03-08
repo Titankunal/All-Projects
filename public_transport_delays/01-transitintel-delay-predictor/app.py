@@ -9,7 +9,7 @@ import plotly.express as px
 app = Flask(__name__)
 
 # Load model and data
-model = joblib.load('xgboost_model.pkl')
+model = joblib.load('models/xgboost_model.pkl')
 
 feature_cols = [
     'temperature_C', 'humidity_percent', 'wind_speed_kmh', 'precipitation_mm', 
@@ -105,7 +105,7 @@ def predict():
 def analytics():
     import os
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    file_path = os.path.join(base_dir, 'public_transport_delays.csv')
+    file_path = os.path.join(base_dir, 'data', 'public_transport_delays.csv')
     raw_df = pd.read_csv(file_path)
     raw_df['delayed_str'] = raw_df['delayed'].map({0: 'On Time', 1: 'Delayed'})
     colors = {'On Time': '#5bc0be', 'Delayed': '#ff8c00'}
