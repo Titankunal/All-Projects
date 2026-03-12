@@ -4,12 +4,6 @@ A full-stack machine learning web application that predicts public transport del
 
 ---
 
-## 🌐 Live Demo
-
-> Run locally at `http://127.0.0.1:5000` after setup
-
----
-
 ## 📸 Screenshots
 
 | Home | Live Predictor | Analytics | Model Insights |
